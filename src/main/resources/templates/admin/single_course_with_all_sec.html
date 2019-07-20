@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <br>
+    <div class="alert alert-secondary" role="alert">Last 10 created Course  ........</div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h3>Course Name : <h3 th:text="${course.course_name}"></h3></h3>
+            <table class="table table-striped">
+                <thead>
+                <th scope="row">#Section ID</th>
+                <th scope="row">Section Name</th>
+                <th scope="row">Add Topic for This Section</th>
+                <th scope="row">See All Section for this Topic</th>
+                <th scope="row">Action</th>
+                </thead>
+                <tbody>
+                <tr th:each="section : ${all_sec}">
+                    <td th:text="${section.section_id}"></td>
+                    <td th:text="${section.name}"></td>
+                    <td>
+                        <a th:href="@{/admin/topic/addTopic_for_section}">
+                            Add Topic
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/admin/topic/see_all_topic_for_this_section/__${section.section_id}__}">
+                            See All Topic
+                        </a>
+                    </td>
+                    <td>
+                        <a target="_blank" th:href="@{/admin/sec/update_sec/__${section.section_id}__}">Update Section</a>
+                                                   OR
+                        <a target="_blank" th:href="@{/admin/sec/delete_sec/__${section.section_id}__}">Delete Section</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

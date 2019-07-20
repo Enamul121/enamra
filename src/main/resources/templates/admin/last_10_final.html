@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <br>
+    <div class="alert alert-secondary" role="alert">Last 10 Final Course  ........</div>
+    <br>
+
+
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                <th scope="row">#ID</th>
+                <th scope="row">Course Name</th>
+                <th>Details</th>
+                </thead>
+                <tbody>
+                <tr th:each="list : ${courseLists}">
+                    <td th:text="${list.course_id}"></td>
+                    <td th:text="${list.course_name}"> </td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/admin/course/full_details/__${list.course_id}__}"  >Details</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+    </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

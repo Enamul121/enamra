@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <br>
+    <div class="alert alert-secondary" role="alert">Single Section With All Topic</div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 th:text="'Course Name : '+ ${course.getCourse_name()}"></h3>
+            <h4 th:text=" 'Section Name: ' + ${section.getName()} "></h4>
+            <table class="table table-striped">
+                <thead>
+                <th scope="row">#Topic ID</th>
+                <th scope="row">Topic Name</th>
+                <th scope="row">File Name</th>
+                <th scope="row">Update OR Delete Topic </th>
+
+                </thead>
+                <tbody>
+                <tr th:each="topicList : ${topic}">
+                    <td >#</td>
+                    <td th:text="${topicList.getTopic_name()}"></td>
+                   <!-- <td th:text="${topicList.getVideo_name()}"></td>-->
+                    <td>
+                         <video id="video1" controls autoplay="false" width="500px" height="300px" >
+                                <source th:src="@{__${topicList.video_path}__}" type="video/mp4">
+                                  your browser does not support this type of video
+                             </video>
+                       <!-- <img th:src="@{__${topicList.video_path}__}" height="200px" width="200px" >-->
+                    </td>
+                    <td>
+                        <a th:href="@{/admin/topic/update/__${topicList.id}__}">Update Topic</a>
+                                                   ||
+                        <a th:href="@{/admin/topic/delete/__${topicList.id}__}">Delete Topic</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

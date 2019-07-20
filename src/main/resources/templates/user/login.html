@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>
+
+    <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6">
+        <!-- Default form login -->
+        <form class="text-center border border-light p-5" th:action="@{/user/login}" method="post" >
+
+            <p class="h4 mb-4">Sign in</p>
+            <!-- Email -->
+            <input type="email" name="email"  class="form-control mb-4" placeholder="E-mail">
+            <!-- Password -->
+            <input type="password" name="password" class="form-control mb-4" placeholder="Password">
+            <div class="d-flex justify-content-around">
+                <div>
+                    <!-- Remember me -->
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label" >Remember me</label>
+                    </div>
+                </div>
+                <div>
+                    <!-- Forgot password -->
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+            <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+            <p>Not a member?
+                <a th:href="@{/user/signup}">Register</a>
+            </p>
+        </form>
+    </div>
+
+    <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>
+</div>
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+
+</body>
+</html>

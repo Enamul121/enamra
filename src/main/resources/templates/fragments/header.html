@@ -1,0 +1,753 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:fragment="header-css-and-meta">
+        <link rel="icon" href="../../static/img/favicon.ico" type="image/x-icon" th:href="@{/img/favicon.ico}">
+        <meta charset="UTF-8"/>
+        <title>Enamra</title>
+        <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}">
+        <link href="../../static/css/fontawesome/all.css" rel="stylesheet" th:href="@{/css/fontawesome/all.css}">
+        <link href="../../static/css/main.css" rel="stylesheet" th:href="@{/css/main.css}">
+    </div>
+
+
+</head>
+<body>
+
+<div th:fragment="banner">
+    <div class="row banner01">
+        <div class="col-xl-1 col-sm-1 col-md-1 col-lg-1">
+            <div class="logo_001"><img class="img-fluid"  src="../img/logo.png" th:src="@{/img/logo.png}"></div>
+        </div>
+
+        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="app_001"><!--App--></div>
+        </div>
+
+
+        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="search_001">
+                <div class="input-group md-form form-sm form-2 pl-0">
+                    <input aria-label="Search"
+                           class="form-control my-0 py-1" placeholder="Search" type="text">
+                    <div class="input-group-append">
+                             <span class="input-group-text red lighten-3" id="basic-text1">
+                                 <i aria-hidden="true" class="fa fa-search text-grey"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="auth_001">
+                <div sec:authorize="!isAuthenticated()">
+                    <ul>
+                        <li> <a class="btn btn-outline-info nav-link" th:href="@{/user/signup}">Registration</a> </li>
+                        <li>  <a class="btn btn-outline-success nav-link" th:href="@{/user/login}">Log In</a> </li>
+                    </ul>
+
+                </div>
+               <!-- <div sec:authorize="!isAuthenticated()">
+                <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">
+                    Registration
+                </button>
+                &lt;!&ndash; Modal 1&ndash;&gt;
+                <div aria-hidden="true" aria-labelledby="exampleModalLabel1" class="modal fade" id="exampleModal" role="dialog"
+                     tabindex="-1">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        &lt;!&ndash;    <div class="modal-header">
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>&ndash;&gt;
+                            <div class="modal-body">
+                                &lt;!&ndash; Default form register &ndash;&gt;
+                                <form class="text-center border border-light p-5" method="POST" th:action="@{/signUp}" th:object="${user}">
+
+                                    <p class="h4 mb-4">Sign up</p>
+                                    <div class="form-row mb-4">
+                                        <div class="col">
+                                            &lt;!&ndash; First name id="defaultRegisterFormFirstName" &ndash;&gt;
+                                            <input class="form-control" th:field="*{firstname}"  placeholder="First name" type="text">
+                                        </div>
+                                        <div class="col">
+                                            &lt;!&ndash; Last name   id="defaultRegisterFormLastName"&ndash;&gt;
+                                            <input class="form-control"  th:field="*{lastname}" placeholder="Last name" type="text">
+                                        </div>
+                                    </div>
+
+                                    &lt;!&ndash;username&ndash;&gt;
+                                    <input class="form-control mb-4" th:field="*{username}"  placeholder="username" type="text">
+
+
+                                    &lt;!&ndash; E-mail &ndash;&gt;
+                                    <input class="form-control mb-4" th:field="*{email}" id="defaultRegisterFormEmail" placeholder="E-mail" type="email">
+
+                                    &lt;!&ndash; Password &ndash;&gt;
+                                    <input aria-describedby="defaultRegisterFormPasswordHelpBlock" class="form-control" id="defaultRegisterFormPassword"
+                                           placeholder="Password" type="password" th:field="*{password}">
+                                    <small class="form-text text-muted mb-4" id="defaultRegisterFormPasswordHelpBlock">
+                                        At least 5 characters and 1 digit
+                                    </small>
+
+                                    &lt;!&ndash; confirm password &ndash;&gt;
+                                    <input aria-describedby="defaultRegisterFormPhoneHelpBlock" class="form-control" id="defaultRegisterPhonePassword"
+                                           placeholder="confirm password" type="text" th:field="*{confirmPassword}" required>
+                                    <small class="form-text text-muted mb-4" id="defaultRegisterFormPhoneHelpBlock">
+                                        For two step authentication
+                                    </small>
+
+                                    &lt;!&ndash; Newsletter &ndash;&gt;
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="defaultRegisterFormNewsletter" type="checkbox">
+                                        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our
+                                            newsletter</label>
+                                    </div>
+
+                                    &lt;!&ndash; Sign up button &ndash;&gt;
+                                    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+                                    <hr>
+
+                                    &lt;!&ndash; Terms of service &ndash;&gt;
+                                    <p>By clicking
+                                        <em>Sign up</em> you agree to our
+                                        <a href="" target="_blank">terms of service</a>
+
+                                </form>
+                                &lt;!&ndash; Default form register &ndash;&gt;
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-success" data-target="#exampleModal2" data-toggle="modal" type="button">
+                    Sign In
+                </button>
+                &lt;!&ndash; Modal 2 &ndash;&gt;
+                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal2" role="dialog"
+                     tabindex="-1">
+                    <div class="modal-dialog" role="document">
+                        <div align="center" class="modal-content">
+                            &lt;!&ndash;<div class="modal-header">
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>&ndash;&gt;
+                            <div class="modal-body">
+                                &lt;!&ndash; Default form login &ndash;&gt;
+                                <form class="text-center border border-light p-5">
+
+                                    <p class="h4 mb-4">Sign in</p>
+
+                                    &lt;!&ndash; Email &ndash;&gt;
+                                    <input class="form-control mb-4" id="defaultLoginFormEmail" placeholder="E-mail" type="email">
+
+                                    &lt;!&ndash; Password &ndash;&gt;
+                                    <input class="form-control mb-4" id="defaultLoginFormPassword" placeholder="Password"
+                                           type="password">
+
+                                    <div class="d-flex justify-content-around">
+                                        <div>
+                                            &lt;!&ndash; Remember me &ndash;&gt;
+                                            <div class="custom-control custom-checkbox">
+                                                <input class="custom-control-input" id="defaultLoginFormRemember" type="checkbox">
+                                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember
+                                                    me</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            &lt;!&ndash; Forgot password &ndash;&gt;
+                                            <a href="">Forgot password?</a>
+                                        </div>
+                                    </div>
+
+                                    &lt;!&ndash; Sign in button &ndash;&gt;
+                                    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+                                    &lt;!&ndash; Register &ndash;&gt;
+                                    <p>Not a member?
+                                        <a href="">Register</a>
+                                    </p>
+                                </form>
+                                &lt;!&ndash; Default form login &ndash;&gt;
+                            </div>
+                            <div class="modal-footer">
+                                &lt;!&ndash; footer content&ndash;&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>-->
+                <div sec:authorize="isAuthenticated()">
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                               data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+                                User info
+                            </a>
+                            <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Points</a>
+                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="#">Settings</a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" th:href="@{/user/logout}">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="navigation_menu">
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12 nnnab">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#"><i class="fas fa-indent"></i></a>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse"
+                        type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">General</a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">Academic</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">Professional</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">TLD</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">Trending</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">App</button>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!--SLIDER-->
+<div th:fragment="slider">
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <header>
+                <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+                        <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+                        <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <!-- Slide One - Set the background image for this slide in the line below
+                         https://source.unsplash.com/LAaSoL0LrYs/1920x1080
+                         -->
+                        <div class="carousel-item active"
+                             style="background-image: url('../img/yy.jpg')">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2 class="display-4">Say YES </h2>
+                                <p class="lead">YES we can do what we want</p>
+                            </div>
+                        </div>
+                        <!-- Slide Two - Set the background image for this slide in the line below
+                         https://source.unsplash.com/bF2vsubyHcQ/1920x1080
+                         -->
+                        <div class="carousel-item"
+                             style="background-image: url('../img/a3.jpg')">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2 class="display-4">Discover New Horizon for learning.....</h2>
+                                <p class="lead">This is a description for the second slide.</p>
+                            </div>
+                        </div>
+                        <!-- Slide Three - Set the background image for this slide in the line below
+                         https://source.unsplash.com/szFUQoyvrxM/1920x1080
+                         -->
+                        <div class="carousel-item"
+                             style="background-image: url('../img/a2.jpg')">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2 class="display-4">CHESS YOUR PERPOSE</h2>
+                                <p class="lead">success is not an accident So Get READY</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </header>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<div th:fragment="cards">
+    <div class="row">
+        <br>
+        <div class="col-12"><h2>Recently Added Course</h2></div>
+        <br>
+    </div>
+   <!-- <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name </h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Course Name</h5>
+                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the
+                        panel's content.</p>
+                    <a class="card-link">Card link</a>
+                    <a class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+
+    </div>-->
+    <div class="row" >
+        <div class="col-3" th:each="first : ${recently_4}">
+            <a target="_blank" th:href="@{/v/course/full/__${first.course_id}__}" class="nav-link">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${first.course_name}">Course Name </h5>
+                        <p class="card-text" th:text="${first.description}">Some quick example text to build on the panel title and make up the bulk of the
+                            panel's content.</p>
+                        <a class="card-link">See All</a>
+                        <a class="card-link">Full Course</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-3" th:each="second : ${second_4}">
+            <a target="_blank" th:href="@{/v/course/full/__${second.course_id}__}" class="nav-link">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${second.course_name}">Course Name </h5>
+                        <p class="card-text" th:text="${second.description}">Some quick example text to build on the panel title and make up the bulk of the
+                            panel's content.</p>
+                        <a class="card-link">See All</a>
+                        <a class="card-link">Full Course</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br>
+</div>
+<div th:fragment="tabs">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab"
+               role="tab">Academic Domain</a>
+        </li>
+        <li class="nav-item">
+            <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab"
+               role="tab">Professional</a>
+        </li>
+        <li class="nav-item">
+            <a aria-controls="contact" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact" id="contact-tab"
+               role="tab">Language</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+
+            <div class="row">
+                <br>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">Automata</li>
+                        <li class="list-group-item">Accounting</li>
+                        <li class="list-group-item">Econmics</li>
+                        <li class="list-group-item">Operating System</li>
+                        <li class="list-group-item">Algorithms</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">Computer Graphics</li>
+                        <li class="list-group-item">System Alalysis and Design</li>
+                        <li class="list-group-item">Artificial Intelligence</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Ecommerce and Web Application</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"> Artificial Neural Network</li>
+                        <li class="list-group-item"> Biometrics</li>
+                        <li class="list-group-item">Control Systems</li>
+                        <li class="list-group-item"> Data Mining</li>
+                        <li class="list-group-item"> Cryptography</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">Design and Analysis of Algorithms</li>
+                        <li class="list-group-item"> DBMS</li>
+                        <li class="list-group-item"> Digital Communication</li>
+                        <li class="list-group-item"> Digital Circuits</li>
+                        <li class="list-group-item">Digital Signal Processing</li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+
+
+        </div>
+        <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
+            <div class="row">
+                <br>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">JAVA TECHNOLOGIES</li>
+                        <li class="list-group-item"> Java Cryptography</li>
+                        <li class="list-group-item"> Java Concurrency</li>
+                        <li class="list-group-item"> JavaFx</li>
+                        <li class="list-group-item"> Spring Boot</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">BIG DATA & ANALYTICS</li>
+                        <li class="list-group-item"> Apache Kafka</li>
+                        <li class="list-group-item"> Cassandra</li>
+                        <li class="list-group-item"> Hadoop</li>
+                        <li class="list-group-item"> R Programming</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">PYTHON TECHNOLOGIES</li>
+                        <li class="list-group-item">Artificial Intelligence with Python</li>
+                        <li class="list-group-item"> Concurrency with Python</li>
+                        <li class="list-group-item">Logistic Regression in Python</li>
+                        <li class="list-group-item">Python Deep Learning</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">MOBILE DEVELOPMENT</li>
+                        <li class="list-group-item"> Android</li>
+                        <li class="list-group-item"> Cordova</li>
+                        <li class="list-group-item"> Kotlin</li>
+                        <li class="list-group-item"> Xamarin</li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact" role="tabpanel">
+            <div class="row">
+                <br>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">English</li>
+                        <li class="list-group-item"> Arabic</li>
+                        <li class="list-group-item"> Bengali</li>
+                        <li class="list-group-item"> Bosnian</li>
+                        <li class="list-group-item"> Afrikaans</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"> Albanian</li>
+                        <li class="list-group-item"> Amharic</li>
+                        <li class="list-group-item"> Azerbaijani</li>
+                        <li class="list-group-item"> Catalan</li>
+                        <li class="list-group-item">Chinese (Simplified)</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item"> Chinese (Traditional)</li>
+                        <li class="list-group-item">Czech</li>
+                        <li class="list-group-item"> Dutch</li>
+                        <li class="list-group-item"> Irish</li>
+                        <li class="list-group-item"> Italians</li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">Japanese</li>
+                        <li class="list-group-item"> Korean</li>
+                        <li class="list-group-item"> Polish</li>
+                        <li class="list-group-item">Portuguese</li>
+                        <li class="list-group-item"> Russian</li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="footer">
+
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark">
+
+        <div style="background-color: #6351ce;">
+            <div class="container">
+
+                <!-- Grid row-->
+                <div class="row py-4 d-flex align-items-center">
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                        <h6 class="mb-0">Get connected with us on social networks!</h6>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <i class="fab fa-facebook-f white-text mr-4"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <i class="fab fa-twitter white-text mr-4"> </i>
+                        </a>
+                        <!-- Google +-->
+                        <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic">
+                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <i class="fab fa-instagram white-text"> </i>
+                        </a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row-->
+
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left footer_main">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                    <!-- Topic -->
+                    <h6 class="text-uppercase font-weight-bold">Company name</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipisicing elit.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Products</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">Enamra 1</a>
+                    </p>
+                    <p>
+                        <a href="#!">Enamra 1</a>
+                    </p>
+                    <p>
+                        <a href="#!">BrandFlow</a>
+                    </p>
+                    <p>
+                        <a href="#!">Bootstrap Angular</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#!">Become an Affiliate</a>
+                    </p>
+                    <p>
+                        <a href="#!">Shipping Rates</a>
+                    </p>
+                    <p>
+                        <a href="#!">Help</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <p>
+                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="#"> enamra.com</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+</div>
+
+<div th:fragment="all-js">
+    <script src="../../static/js/fontawesome/all.js" th:src="@{/js/fontawesome/all.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js}"></script>
+    <script th:src="@{/webjars/jquery/3.2.1/dist/jquery.slim.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+</div>
+</body>
+</html>

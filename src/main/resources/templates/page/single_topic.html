@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+    <br>
+
+
+     <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course.course_name}"></div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="alert alert-light" role="alert" th:text=" '||>>Chapter Name: '+${section.name}"></div>
+        </div>
+         <div class="col-md-5 col-sm-5">
+             <div class="alert alert-light" role="alert" th:text=" '||>>Topic: '+${topic_single.topic_name}"></div>
+         </div>
+     </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <ul class="list-group" th:each="topic : ${topicList}">
+                <a th:href="@{/g/topic/single_topic/__${topic.id}__}"
+                   class="nav-link list-group-item" th:text="${topic.topic_name}"></a>
+            </ul>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div sec:authorize="!isAuthenticated()">
+                <div class="alert alert-danger" role="alert">
+                   Please Login to See Video and others features
+                </div>
+            </div>
+            <div class="topic-video">
+                <video id="video1" controls autoplay="false" width="100%" height="450px" >
+                    <source th:src="@{__${topic_single.video_path}__}" type="video/mp4">
+                    your browser does not support this type of video
+                </video>
+            </div>
+
+            <br>
+            <hr>
+            <div class="comments-button">
+                <a th:href="@{'/comment/{id}'(id=${topic_single.id})}" class="btn btn-info">Write Comments about this topic</a>
+                <br>
+            </div>
+            <div class="comments_and_other_tabs">
+                <br>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Comments</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Topic Reading</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tips</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <br>
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                    <div class="row">
+                        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                           <!-- 111111-->
+                            <!--Comments-->
+                            <div class="well" th:each="comment : ${commentsList}">
+                                <h5 th:text="${comment.comment_body}">Body</h5>
+                                <div th:text="'Created: ' + ${#dates.format(comment.comment_date, 'dd-MMM-yyyy')} + ' by '">
+                                    Created by
+                                </div>
+                                <div><a th:text="${comment.user.firstname}" th:href="@{'/#/' + ${comment.user.username}}">User</a>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">2222222</div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">3333333333</div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

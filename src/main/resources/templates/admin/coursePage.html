@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <div class="alert alert-secondary" role="alert">welcome to Course Page ........</div>
+    <br>
+    <div th:replace="/fragments/section :: admin_course_info"></div>
+
+
+    <br>
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
+</div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+
+
+    <br>
+    <div class="alert alert-secondary" role="alert">Course Details</div>
+    <br>
+
+
+    <div class="row">
+
+        <div class="col-md-3 col-sm-3">
+            <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course_full.course_name}"></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <ul class="list-group" th:each="section : ${section}">
+                <a th:href="@{/v/course/all_topic/__${section.section_id}__}" class="nav-link list-group-item" th:text="${section.name}"></a>
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-3"></div>
+    </div>
+
+
+
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Default form contact -->
+            <form class="text-center border border-light p-5" method="POST" th:action="@{/admin/sec/addSec_for_course}" th:object="${section}">
+
+                <p class="h4 mb-4">Create Section/Chapter For Course <!--<p th:text="${course.course_name}"></p>-->
+                <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}"></div>
+                <div class="alert alert-success" role="alert" th:if="${msg}">
+                    <a class="nav-link" href="/admin/course">go course page</a>
+                </div>
+                <div class="alert alert-success" role="alert" th:if="${error}" th:utext="${error}"></div>
+
+
+                   <!--  <input type="hidden"  >    th:field="*{section_id}"       -->
+                     <input type="number" th:field="*{course}"  class="form-control mb-4" placeholder="Course ID ">
+                     <input type="text"  th:field="*{name}" class="form-control mb-4" placeholder="write section or chapter name">
+
+
+                <button class="btn btn-info btn-block" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

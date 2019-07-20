@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/section :: admin_menu"></div>
+
+    <h1>Admin Home........</h1>
+    <div th:replace="/fragments/section :: admin-info"></div>
+
+    <br>
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

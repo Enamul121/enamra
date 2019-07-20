@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+
+    <br>
+
+
+
+    <div class="row">
+        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"></div>
+        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4">
+            <form method="POST" th:action="@{/comment/create}" th:object="${comments}">
+
+                <input type="text" th:field="*{topic}" th:value="${topicCC}" style="display:none;"> 
+                <div class="form-group">
+                    <label class="nav-link" for="exampleFormControlTextarea1">Write your comment here</label>
+                    <textarea th:field="*{comment_body}" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary">Submit comment</button>
+
+            </form>
+        </div>
+        <div class="col-xl-4 col-sm-4 col-md-4 col-lg-4"></div>
+    </div>
+
+
+
+
+
+    <br>
+
+    <br>
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+</div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

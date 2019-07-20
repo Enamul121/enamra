@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <br>
+    <div class="alert alert-secondary" role="alert">Last 10 created Course  ........</div>
+    <br>
+
+
+
+      <div th:replace="/fragments/section :: course_list_last_10"></div>
+
+
+
+
+
+
+    </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course1.course_name}"></div>
+        </div>
+        <div class="col-md-3 col-sm-9">
+            <div class="alert alert-light" role="alert"> click the left side topic to watch video</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <div class="alert alert-light" role="alert" th:text=" 'Chapter Name: '+${section1.name}"></div>
+        </div>
+        <div class="col-md-3 col-sm-9"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <ul class="list-group" th:each="topic : ${topicList1}">
+                <a target="_blank" th:href="@{/g/topic/single_topic/__${topic.id}__}"
+                   class="nav-link list-group-item" th:text="${topic.topic_name}"></a>
+            </ul>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="content-video-img">
+                <img src="../../static/img/video.png" th:src="@{/img/video.png}">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>
