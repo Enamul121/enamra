@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-3 col-sm-3">
             <ul class="list-group" th:each="topic : ${topicList1}">
-                <a target="_blank" th:href="@{/g/topic/single_topic/__${topic.id}__}"
+                <a  th:href="@{/g/topic/single_topic/__${topic.id}__}"
                    class="nav-link list-group-item" th:text="${topic.topic_name}"></a>
             </ul>
         </div>

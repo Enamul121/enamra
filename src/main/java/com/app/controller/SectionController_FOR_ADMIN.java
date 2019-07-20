@@ -3,6 +3,7 @@ package com.app.controller;
 
 import com.app.model.Course;
 import com.app.model.Section;
+import com.app.repository.SectionRepo;
 import com.app.service.impl.CourseService;
 import com.app.service.impl.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class SectionController_FOR_ADMIN {
 
     @Autowired
     private SectionService sectionService;
+
+    @Autowired
+    private SectionRepo sectionRepo;
 
     @GetMapping("/addSec_for_course")
     public ModelAndView sectionPage(){
@@ -59,11 +63,24 @@ public class SectionController_FOR_ADMIN {
     @GetMapping("/update_sec/{section_id}")
     public ModelAndView updateSection(@PathVariable("section_id") Long id){
         ModelAndView model = new ModelAndView();
-        Section section = sectionService.findSectionByID(id);
-        model.addObject("section", section);
-        model.setViewName("admin/SectionForm");
+        Section find_section = sectionService.findSectionByID(id);
+        model.addObject("section", find_section);
+        model.setViewName("admin/UpdateSection");
         return model;
 
+    }
+
+    @PostMapping("/update_sec")
+    public ModelAndView update_section(@Valid Section section, BindingResult bindingResult){
+        ModelAndView model = new ModelAndView();
+        if (bindingResult.hasErrors()){
+            model.addObject("error","something went wrong ....");
+        }else {
+            sectionRepo.save(section);
+            model.addObject("msg","Course Has been Updated Successfully...");
+            model.setViewName("admin/UpdateSection");
+        }
+        return model;
     }
 
 

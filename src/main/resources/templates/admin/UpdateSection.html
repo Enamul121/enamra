@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
             <!-- Default form contact -->
-            <form class="text-center border border-light p-5" method="POST" th:action="@{/admin/sec/addSec_for_course}" th:object="${section}">
+            <form class="text-center border border-light p-5" method="POST" th:action="@{/admin/sec/update_sec}" th:object="${section}">
 
                 <p class="h4 mb-4">Create Section/Chapter For Course <!--<p th:text="${course.course_name}"></p>-->
                 <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}"></div>
@@ -21,8 +21,8 @@
                 <div class="alert alert-success" role="alert" th:if="${error}" th:utext="${error}"></div>
 
 
-                   <!-- <input type="hidden"   th:field="*{section_id}"   >-->
-                     <input type="number" th:field="*{course}"  class="form-control mb-4" placeholder="Course ID ">
+                    <input type="hidden"   th:field="*{section_id}"   >
+                     <input type="number" th:field="*{course.course_id}"  class="form-control mb-4" placeholder="Course ID ">
                      <input type="text"  th:field="*{name}" class="form-control mb-4" placeholder="write section or chapter name">
 
 
