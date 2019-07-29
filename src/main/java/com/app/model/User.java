@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -47,6 +48,11 @@ public class User {
     @Setter
     @OneToMany(mappedBy = "user")
     private List<Comments> comments;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogspost= new ArrayList<>();
 
 
     @java.beans.ConstructorProperties({"id", "email", "firstname", "lastname", "username", "password", "confirmPassword", "active", "roles"})

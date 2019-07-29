@@ -57,6 +57,10 @@ public class TopicController_For_ADMIN {
             model.addObject("error","Something Went Wrong");
             model.setViewName("admin/topicForm");
         }else {
+            if (file==null){
+
+            }
+
             topicService.saveTopic(topic,file);
             model.addObject("msg"," Topic Created Successfully");
             model.setViewName("admin/topicForm");

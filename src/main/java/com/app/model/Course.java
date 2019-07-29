@@ -31,6 +31,9 @@ public class Course {
             orphanRemoval = true)
     private List<Section> section = new ArrayList<>();
 
+    @OneToMany(mappedBy = "course")
+    private List<Blog> blogs = new ArrayList<>();
+
 
     @Override
     public String toString() {

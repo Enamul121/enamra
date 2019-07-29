@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/section :: admin_menu"></div>
+    <br>
+
+
+   <h1> Welcome to Blog</h1>
+
+    <div class="row">
+        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2">
+            <a class="nav-link btn btn-outline-secondary" th:href="@{/blog/postForm/__${course.course_id}__}">
+               <i class="fa fa-plus white-text mr-4"> </i>Create Post
+            </a>
+        </div>
+        <div class="col-xl-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="alert alert-primary" role="alert">See All Post</div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

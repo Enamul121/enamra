@@ -175,6 +175,7 @@
                 <thead>
                 <th scope="row">#ID</th>
                 <th scope="row">Course Name</th>
+                <th scope="row"> Blog</th>
                 <th scope="row">Chapter</th>
                 <th scope="row">Update Course</th>
                 <th scope="row">Delete Course</th>
@@ -183,6 +184,7 @@
                 <tr th:each="list : ${courseLists}">
                     <td th:text="${list.course_id}"></td>
                     <td th:text="${list.course_name}"></td>
+                    <td><a th:href="@{/admin/course/blog/__${list.course_id}__}">blog</a> </td>
                     <td><a th:href="@{/admin/sec/addSec_for_course}">Add Section</a> </td>
                     <td>
                         <a class="btn btn-primary" th:href="@{/admin/course/update_course/__${list.course_id}__}"  role="button" >Update</a>

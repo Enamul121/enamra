@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Blog Form</h1>
+
+            <form class="text-center border border-light p-5" method="POST"
+                  th:action="@{/blog/post/create}" th:object="${blogPost}">
+
+                <p class="h4 mb-4">Create Post For Course or Chapter or Topic
+                <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}"></div>
+                <div class="alert alert-danger" role="alert" th:if="${error}" th:utext="${error}"></div>
+
+                <div class="alert alert-success" role="alert" th:if="${msg}">
+                    <a class="nav-link" href="/admin/course">go course page</a>
+                </div>
+                <div class="alert alert-success" role="alert" th:if="${error}" th:utext="${error}"></div>
+                  <input type="text" th:field="*{course}" th:value="${courseCC}" style="display: none">
+                <input type="hidden" th:field="*{post_id}">
+                     <input type="text"  th:field="*{post_title}"  class="form-control mb-4"
+                            placeholder="Post Title.............. ">
+                <textarea th:field="*{post_body}" rows="5" class="form-control mb-4"
+                          placeholder="Post Body ....  Up to 6500 char Max..."></textarea>
+
+                <button class="btn btn-info btn-block" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

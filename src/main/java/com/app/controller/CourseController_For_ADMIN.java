@@ -145,5 +145,15 @@ public class CourseController_For_ADMIN {
         return model;
     }
 
+    // /admin/course/blog/__${course_id}__
+    @GetMapping("/blog/{course_id}")
+    public ModelAndView blogpage(@PathVariable("course_id") Long id){
+        ModelAndView model = new ModelAndView("admin/blog");
+        Course findCourse = courseService.findCourseById(id);
+        model.addObject("course", findCourse);
+
+        return model;
+    }
+
 
 }

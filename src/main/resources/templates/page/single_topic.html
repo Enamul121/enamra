@@ -16,10 +16,14 @@
 
      <div class="row">
         <div class="col-md-3 col-sm-3">
-            <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course.course_name}"></div>
+            <a  class="nav-link topic_course" th:href="@{/v/course/full/__${course.course_id}__}">
+               <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course.course_name}"></div>
+            </a>
         </div>
         <div class="col-md-4 col-sm-4">
-            <div class="alert alert-light" role="alert" th:text=" '||>>Chapter Name: '+${section.name}"></div>
+            <a class="nav-link topic_course" th:href="@{/v/course/all_topic/__${section.section_id}__}">
+               <div class="alert alert-light" role="alert" th:text=" '||>>Chapter Name: '+${section.name}"></div>
+            </a>
         </div>
          <div class="col-md-5 col-sm-5">
              <div class="alert alert-light" role="alert" th:text=" '||>>Topic: '+${topic_single.topic_name}"></div>
