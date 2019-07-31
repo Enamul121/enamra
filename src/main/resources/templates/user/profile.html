@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+
+
+    <br>
+    <h1> PROFILE</h1>
+<div class="row">
+    <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+        ​<picture>
+            <img th:src="@{/profile_img}" class="rounded mx-auto d-block profile_pic" alt="..." >
+        </picture>
+        <br>
+    </div>
+    <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+        <h3 th:text="${user.firstname + ' '+ user.lastname}"></h3>
+        <p th:text="${ 'Email : '+ user.email}"></p>
+    </div>
+</div>
+
+
+
+    <br>
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Description</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+            <h3>File Upload Section ..........................</h3>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab"
+                       role="tab"> General</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab"
+                       role="tab">PDF</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-controls="contact" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact" id="contact-tab"
+                       role="tab">IMAGES : JPEG/PNG</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-controls="settings" aria-selected="false" class="nav-link" data-toggle="tab" href="#settings" id="settings-tab"
+                       role="tab">Settings </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+
+                    <div class="row">
+                        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+                        <br>
+                           <h3>Welcome to general file Section.....</h3>
+                        <br>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+                            <br>
+                            <h3>PDF  file Section.....</h3>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+                            <br>
+                            <h3>Images file Section.....</h3>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div aria-labelledby="settings-tab" class="tab-pane fade" id="settings" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+                            <br>
+                            <h3>Settings Section.....</h3>
+                            <br>
+                            <div class="row">
+                                <br>
+                                <div class="col-3">
+                                    <ul class="list-group">
+                                     <a class="nav-link" th:href="@{/profile_pic_upload}">  <li class="list-group-item">Set Profile Picture</li> </a>
+                                        <a class="nav-link" th:href="@{/#}">  <li class="list-group-item">Description</li> </a>
+                                        <a class="nav-link" th:href="@{/#}"> <li class="list-group-item">Modes</li></a>
+                                        <a class="nav-link" th:href="@{/#}"> <li class="list-group-item">CC</li></a>
+                                        <a class="nav-link" th:href="@{/#}"> <li class="list-group-item">Social Links</li></a>
+                                    </ul>
+                                </div>
+                                <div class="col-3"></div>
+                                <div class="col-3"></div>
+                                <div class="col-3"></div>
+                                <br>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
+    <br>
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

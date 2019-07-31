@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+
+            <form class="text-center border border-light p-5" method="POST" enctype="multipart/form-data"
+                  th:action="@{/profile_pic_upload}" th:object="${profile_pic}">
+
+                <p class="h4 mb-4">Upload Profile Picture
+
+                <input type="file"  th:name="file" class="form-control mb-4" placeholder="Upload File">
+                <button class="btn btn-info btn-block" type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

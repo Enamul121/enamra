@@ -50,148 +50,17 @@
                     </ul>
 
                 </div>
-               <!-- <div sec:authorize="!isAuthenticated()">
-                <button class="btn btn-primary" data-target="#exampleModal" data-toggle="modal" type="button">
-                    Registration
-                </button>
-                &lt;!&ndash; Modal 1&ndash;&gt;
-                <div aria-hidden="true" aria-labelledby="exampleModalLabel1" class="modal fade" id="exampleModal" role="dialog"
-                     tabindex="-1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        &lt;!&ndash;    <div class="modal-header">
-                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>&ndash;&gt;
-                            <div class="modal-body">
-                                &lt;!&ndash; Default form register &ndash;&gt;
-                                <form class="text-center border border-light p-5" method="POST" th:action="@{/signUp}" th:object="${user}">
 
-                                    <p class="h4 mb-4">Sign up</p>
-                                    <div class="form-row mb-4">
-                                        <div class="col">
-                                            &lt;!&ndash; First name id="defaultRegisterFormFirstName" &ndash;&gt;
-                                            <input class="form-control" th:field="*{firstname}"  placeholder="First name" type="text">
-                                        </div>
-                                        <div class="col">
-                                            &lt;!&ndash; Last name   id="defaultRegisterFormLastName"&ndash;&gt;
-                                            <input class="form-control"  th:field="*{lastname}" placeholder="Last name" type="text">
-                                        </div>
-                                    </div>
-
-                                    &lt;!&ndash;username&ndash;&gt;
-                                    <input class="form-control mb-4" th:field="*{username}"  placeholder="username" type="text">
-
-
-                                    &lt;!&ndash; E-mail &ndash;&gt;
-                                    <input class="form-control mb-4" th:field="*{email}" id="defaultRegisterFormEmail" placeholder="E-mail" type="email">
-
-                                    &lt;!&ndash; Password &ndash;&gt;
-                                    <input aria-describedby="defaultRegisterFormPasswordHelpBlock" class="form-control" id="defaultRegisterFormPassword"
-                                           placeholder="Password" type="password" th:field="*{password}">
-                                    <small class="form-text text-muted mb-4" id="defaultRegisterFormPasswordHelpBlock">
-                                        At least 5 characters and 1 digit
-                                    </small>
-
-                                    &lt;!&ndash; confirm password &ndash;&gt;
-                                    <input aria-describedby="defaultRegisterFormPhoneHelpBlock" class="form-control" id="defaultRegisterPhonePassword"
-                                           placeholder="confirm password" type="text" th:field="*{confirmPassword}" required>
-                                    <small class="form-text text-muted mb-4" id="defaultRegisterFormPhoneHelpBlock">
-                                        For two step authentication
-                                    </small>
-
-                                    &lt;!&ndash; Newsletter &ndash;&gt;
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="defaultRegisterFormNewsletter" type="checkbox">
-                                        <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our
-                                            newsletter</label>
-                                    </div>
-
-                                    &lt;!&ndash; Sign up button &ndash;&gt;
-                                    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
-                                    <hr>
-
-                                    &lt;!&ndash; Terms of service &ndash;&gt;
-                                    <p>By clicking
-                                        <em>Sign up</em> you agree to our
-                                        <a href="" target="_blank">terms of service</a>
-
-                                </form>
-                                &lt;!&ndash; Default form register &ndash;&gt;
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-success" data-target="#exampleModal2" data-toggle="modal" type="button">
-                    Sign In
-                </button>
-                &lt;!&ndash; Modal 2 &ndash;&gt;
-                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal2" role="dialog"
-                     tabindex="-1">
-                    <div class="modal-dialog" role="document">
-                        <div align="center" class="modal-content">
-                            &lt;!&ndash;<div class="modal-header">
-                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>&ndash;&gt;
-                            <div class="modal-body">
-                                &lt;!&ndash; Default form login &ndash;&gt;
-                                <form class="text-center border border-light p-5">
-
-                                    <p class="h4 mb-4">Sign in</p>
-
-                                    &lt;!&ndash; Email &ndash;&gt;
-                                    <input class="form-control mb-4" id="defaultLoginFormEmail" placeholder="E-mail" type="email">
-
-                                    &lt;!&ndash; Password &ndash;&gt;
-                                    <input class="form-control mb-4" id="defaultLoginFormPassword" placeholder="Password"
-                                           type="password">
-
-                                    <div class="d-flex justify-content-around">
-                                        <div>
-                                            &lt;!&ndash; Remember me &ndash;&gt;
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="defaultLoginFormRemember" type="checkbox">
-                                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember
-                                                    me</label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            &lt;!&ndash; Forgot password &ndash;&gt;
-                                            <a href="">Forgot password?</a>
-                                        </div>
-                                    </div>
-
-                                    &lt;!&ndash; Sign in button &ndash;&gt;
-                                    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-
-                                    &lt;!&ndash; Register &ndash;&gt;
-                                    <p>Not a member?
-                                        <a href="">Register</a>
-                                    </p>
-                                </form>
-                                &lt;!&ndash; Default form login &ndash;&gt;
-                            </div>
-                            <div class="modal-footer">
-                                &lt;!&ndash; footer content&ndash;&gt;
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>-->
                 <div sec:authorize="isAuthenticated()">
                     <ul>
                         <li class="nav-item dropdown">
                             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                                data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
-                                User info
+                                <div sec:authentication="name">User info</div>
                             </a>
                             <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Points</a>
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item nav-link" th:href="@{/profile}">Profile</a>
                                 <a class="dropdown-item" href="#">Settings</a>
 
                                 <div class="dropdown-divider"></div>
