@@ -20,6 +20,11 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/error")
+    public String error(){return "user/error";}
+
+
+
     @GetMapping("/user/home")
     public String home(){return "/user/home";}
 

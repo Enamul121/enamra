@@ -25,7 +25,7 @@
 
         <div class="col-md-3 col-sm-3">
             <div class="alert alert-primary" role="alert" th:text=" 'Course Name: '+${course_full.course_name}"></div>
-            <div class="alert alert-secondary" role="alert"><a class="nav-link" th:href="@{/v/course/__${course_full.course_id}__}"> Blog</a></div>
+            <div class="alert alert-secondary" role="alert"><a class="nav-link" th:href="@{/blog/post_list/__${course_full.course_id}__}"> Blog</a></div>
         </div>
         <div class="col-md-6 col-sm-6">
             <ul class="list-group" th:each="section : ${section}">

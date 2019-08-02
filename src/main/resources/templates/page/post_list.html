@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+       <div class="row">
+         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Post List</h1>
+         </div>
+       </div>
+      <div class="row">
+          <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+              <div th:each="post : ${postList}">
+                 <a class="nav-link" th:href="@{/blog/single_post/__${post.post_id}__}"> <h4 th:text="${post.post_title}"></h4></a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

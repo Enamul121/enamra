@@ -1,6 +1,10 @@
 package com.app.model;
 
 
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Node;
+import com.vladsch.flexmark.util.data.MutableDataSet;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -31,6 +35,18 @@ public class Blog {
 
     @Size(min = 20, max = 6500, message = "post range 20 to 6500 character")
     private String post_body;
+
+
+
+    public String getMarkup(){
+        MutableDataSet options = new MutableDataSet();
+        Parser parser = Parser.builder(options).build();
+        HtmlRenderer renderer = HtmlRenderer.builder(options).build();
+        Node document = parser.parse(post_body);
+        String html = renderer.render(document);
+        return html;
+    }
+
 
 
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+    <br>
+    <h1 class="alert alert-danger">Something Went Wrong</h1>
+    <p class="alert alert-info">Please contract webmaster ...</p>
+
+
+
+    <br>
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
+    <br>
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

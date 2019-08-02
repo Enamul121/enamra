@@ -60,7 +60,6 @@ public class TopicService implements ITopicService {
         try(InputStream in =file.getInputStream()) {
             Files.copy(in, Paths.get(file_uploads_dir+"/"+fileName), StandardCopyOption.REPLACE_EXISTING);
         }catch (Exception e){e.printStackTrace();}
-
     }
 
 }

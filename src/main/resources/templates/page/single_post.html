@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <div th:replace="/fragments/header :: banner"></div>
+    <div th:replace="/fragments/header :: navigation_menu"></div>
+       <div class="row">
+         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <h1>Single Post</h1>
+         </div>
+       </div>
+
+
+      <div class="row">
+          <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+             <div th:each="post : ${post}">
+                 <h3 th:text="post.post_title"></h3>
+                 <p th:text="post.post_body"></p>
+             </div>
+          </div>
+      </div>
+
+
+  </div>
+
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>
