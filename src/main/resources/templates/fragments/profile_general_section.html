@@ -1,0 +1,146 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/header :: header-css-and-meta"></div>
+
+
+</head>
+<body>
+
+
+<div th:fragment="profile-general">
+    <div class="row">
+        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="profile_general_left">
+                <ul class="list-group">
+                    <li>
+                        <div class="profile_img">
+                            <picture>
+                                <img th:src="@{/profile_img}" class="rounded mx-auto d-block profile_pic"
+                                     alt="...">
+                            </picture>
+                            <br>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile_details">
+                            <br>
+                            <h3 th:text="${user.firstname + ' '+ user.lastname}"></h3>
+                            <p th:text="${user.email}"></p>
+                        </div>
+                    </li>
+                    <br>
+                    <li>
+                        <div class="alert alert-secondary" style=" text-align: center"
+                             role="alert">
+                            Details info
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="profile_general_right" >
+                <br>
+                <nav>
+                    <div class="nav nav-tabs nav-fill  hhhpp" id="nav-tab" role="tablist">
+                        <a  class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">overview</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">stars</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">blogging</a>
+                        <a class="nav-item nav-link" id="nav-follower-tab" data-toggle="tab" href="#nav-follower" role="tab" aria-controls="nav-follower" aria-selected="false">follower</a>
+                        <a class="nav-item nav-link" id="nav-following-tab" data-toggle="tab" href="#nav-following" role="tab" aria-controls="nav-following" aria-selected="false">following</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                         <br>
+                         <div class="row">
+                             <div class="col-12">
+                                 <h1 align="center" style="color: grey; font-family: arial helvetica sans-serif;">Recent course </h1>
+
+                                 <br>
+                                 <div class="alert alert-primary" style=" width: 85%; height: 350px; margin-left: 100px;" >
+                                 </div>
+                             </div>
+                         </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 align="center" style="color: grey; font-family: arial helvetica sans-serif;">Exam Participation</h1>
+                                <br>
+                                <div class="alert alert-secondary" style=" width: 85%; height: 350px; margin-left: 100px;" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 align="center" style="color: gray(); font-family: arial helvetica sans-serif;">blogging activities</h1>
+                                <br>
+                                <div class="alert alert-info" style=" color: dimgrey; width: 85%; height: 350px; margin-left: 100px;" >
+                                </div>
+                            </div>
+                        </div>
+                         <br>
+                         <br>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <h1>2222222222222222</h1>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <h1>3333333333333333333</h1>
+                    </div>
+                    <div class="tab-pane fade" id="nav-follower" role="tabpanel" aria-labelledby="nav-follower-tab">
+                        <h1>nav-follower................................44444444444444444</h1>
+                    </div>
+                    <div class="tab-pane fade" id="nav-following" role="tabpanel" aria-labelledby="nav-following-tab">
+                        <h1>nav-following.........................555555555555555555555555</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Description</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is
+                    going to run a bit longer so that you can see how spacing within an alert works with
+                    this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things
+                    nice and tidy.
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                    piece of classical
+                    Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a
+                    Latin professor at
+                    Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words,
+                    consectetur, from a
+                    Lorem Ipsum passage, and going through the cites of the word in classical
+                    literature, discovered the
+                    undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de
+                    Finibus Bonorum et
+                    Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a
+                    treatise on the
+                    theory of ethics, very popular during the Renaissance. The first line of Lorem
+                    Ipsum, "Lorem ipsum dolor
+                    sit amet..", comes from a line in section 1.10.32.
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="admin_menu">
+</div>
+
+
+
+
+
+<div th:replace="/header :: all-js"></div>
+</body>
+</html>

@@ -6,6 +6,8 @@ import com.app.model.User_files;
 import com.app.repository.User_File_Repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,8 +28,10 @@ public class User_File_Service {
     @Autowired
     private User_File_Repo file_repo;
 
-   // @Value("user.file.dir")
+   // @Value("user.file.dir")  /files/blog/img
     String user_file_dir = "/home/enamul/IdeaProjects/new/enamra/src/main/resources/static/user_files";
+        //"/home/enamul/IdeaProjects/new/enamra/src/main/media";
+
 
     //   Upload & then store it to the server.
     public void fileStore(MultipartFile file, String modifiedFileName){
@@ -50,10 +54,18 @@ public class User_File_Service {
         userFiles.setFile_name(modifiedName);
         userFiles.setFile_dir(user_file_dir+"/"+modifiedName);
         userFiles.setFile_extension(file_extension);
-        userFiles.setFull_path("http://localhost:8080/user_files/"+modifiedName);
+        userFiles.setFull_path("http://localhost:8080/user_files/"+modifiedName); // files/blog/img/
         file_repo.save(userFiles);
 
     }
+
+
+
+          public  Page<User_files> allPages(Pageable pageable){
+          return file_repo.findAll(pageable);
+             }
+
+
 
 
 

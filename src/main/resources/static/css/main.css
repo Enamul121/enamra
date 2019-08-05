@@ -82,16 +82,84 @@ padding-top: 120px;}
 .topic_course { padding: 0px 0px 0px; margin: 0px 0px 0px 0px;}
 
 
-.profile_pic {width: 200px; height: 200px; float: left; border: 2px solid;}
+.left_Portion { float: left; border: 2px red; width: 100%; height: auto;}
+
+
+.profile_pic {width: 250px; height: 280px; float: left; border: none;}
+
+.profile_img { display: inline-block; float: left;}
 
 
 
+/*
+#################
+*/
+.project-tab {
+    padding: 10%;
+    margin-top: -8%;
+}
+.project-tab #tabs{
+    background: #007b5e;
+    color: #eee;
+}
+.project-tab #tabs h6.section-title{
+    color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #0062cc;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+.project-tab .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #0062cc;
+    font-size: 16px;
+    font-weight: 600;
+}
+.project-tab .nav-link:hover {
+    border: none;
+}
+.project-tab thead{
+    background: #f3f3f3;
+    color: #333;
+}
+.project-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/****
+////////////
+ */
+
+.profile_general_right {
+
+    border: 1px solid lightgray;
+    margin-top: 45px;
+    min-height: 470px;
+
+}
+
+
+.profile_general_left { border: 1px solid lightgray;
+                        margin-top: 45px;
+
+                       }
+.profile_general_left  ul li { list-style: none;}
+
+
+.hhhpp {}
+.hhhpp a:hover {border-style: none; }
 
 
 
-
-
-
+.markdown-syntax { min-height: 600px; width: 100%; margin-top: 55px;}
 
 
 

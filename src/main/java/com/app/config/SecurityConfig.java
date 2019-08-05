@@ -32,14 +32,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(bCryptPasswordEncoder);
     }
 
+
+    //   "/media/files/blog/img/**","**/media/**",
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(
+                .antMatchers("/files/**","**/media/files/blog/img/**","**/media/**","/media/**",
                         "**/img/**","**/img/logo.png","**/img/favicon.ico","/v/**","/error","/user/logout",
                         "/g/topic/**","/g/**", "/user/signup","/user/login","/","/entry","/blog/**").permitAll()
                 .antMatchers("**/webjars/**","/webjars/**","/resources/static/**").permitAll()
-                .antMatchers("/","/resources/**","/resources/static/upload_files","/resources/static/upload_files/**","/resources/static/img/**","/resources/static/user_files/**", "/img/**", "/fonts/**", "/css/**","/js/**").permitAll()
+                .antMatchers("/media/","/media/**",
+                        "/","/resources/**","/resources/static/upload_files","/resources/static/upload_files/**","/resources/static/img/**","/resources/static/user_files/**", "/img/**", "/fonts/**", "/css/**","/js/**").permitAll()
                 .antMatchers("/admin","/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .antMatchers("/comment/create","/comment/**","/blog/file_upload").hasAnyRole("USER","ADMIN")

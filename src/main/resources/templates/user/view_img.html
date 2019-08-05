@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+        <br>
+
+    <h1> Hello IMG..............................</h1>
+
+
+
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-21 col-lg-12">
+            <table class="table table-striped">
+            <thead>
+            <th scope="row">#ID</th>
+            <th scope="row">Image URL</th>
+            <th scope="row">extension</th>
+            <th scope="row">IMG</th>
+            <th scope="row">Delete</th>
+            </thead>
+            <tbody>
+            <tr th:each="img : ${img_Lists}">
+                <td th:text="${img.file_id}"></td>
+                <td th:text="${img.full_path}"></td>
+                <td th:text="${img.file_extension}"></td>
+                <td><img th:src="@{__${img.full_path}__}" height="200px" width="200px" ></td>
+                <td><a class="btn btn-primary" th:href="@{/CC/__${img.file_id}__}"
+                       role="button">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

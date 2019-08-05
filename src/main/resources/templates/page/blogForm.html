@@ -9,7 +9,7 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xl-9 col-sm-9 col-md-9 col-lg-9">
             <h1>Blog Form</h1>
 
             <form class="text-center border border-light p-5" method="POST"
@@ -32,6 +32,48 @@
 
                 <button class="btn btn-info btn-block" type="submit">Send</button>
             </form>
+        </div>
+        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="text-center border border-light alert alert-info markdown-syntax">
+                <h3> Markdown Style</h3>
+                <hr>
+
+
+                <hr>
+                <ul style="list-style: none">
+                    <li># This is an H1</li>
+                    <li>## This is an H2</li>
+                    <li>etc...</li>
+                    <li>&nbsp;</li>
+
+                    <li>&gt; This is a blockquote</li>
+                    <li>&gt;&gt; This is a nested quote</li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;This is a code block</li>
+                    <li>`This is a code snippet`</li>
+                    <li>&nbsp;</li>
+
+                    <li>- This is an unordered list item</li>
+                    <li>1. This is an ordered list item</li>
+                    <li>&nbsp;</li>
+
+                    <li>Blank lines create paragraphs</li>
+                    <li>----This is a horizontal rule</li>
+                    <li>_this has emphasis_</li>
+                    <li>__this is strong__</li>
+                    <li>\ Backslashes escape special characters</li>
+                    <li>&nbsp;</li>
+                    <hr>
+                <li>[Link](http://www.url.com)</li>
+                <li>[Link](http://www.url.com *Title*)</li>
+                <li>[Link](/local/url/)</li>
+                <li>&lt;http://www.url.com&gt;</li>
+                <li>&lt;someone@email.com&gt;</li>
+                <li>![Alt text](/path/to/img.jpg)</li>
+                <li>![Alt text](/path/to/img.jpg *Title*)</li>
+                <li>&nbsp;</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 
