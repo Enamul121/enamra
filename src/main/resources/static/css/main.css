@@ -163,4 +163,9 @@ padding-top: 120px;}
 
 
 
+.blog_left_side, .blog_right_side {
 
+                                     min-height: 600px; width: 100%;
+
+
+                                  }

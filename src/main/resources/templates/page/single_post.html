@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <div th:replace="/fragments/header :: header-css-and-meta"/>
@@ -9,23 +11,100 @@
   <div class="container-fluid">
     <div th:replace="/fragments/header :: banner"></div>
     <div th:replace="/fragments/header :: navigation_menu"></div>
-       <div class="row">
-         <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
-            <h1>Single Post</h1>
-         </div>
-       </div>
+       <div class="row"><div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"><br></div></div>
 
 
       <div class="row">
-          <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2">
+              <div class="border border-light blog_left_side"></div>
+          </div>
+          <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
              <div th:each="post : ${post}">
                  <h3 th:text="${post.post_title}"></h3>
+                 <hr>
                  <p th:utext="${post.getMarkup()}"></p>
              </div>
           </div>
+              <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2">
+                  <div class="border border-light blog_right_side"></div>
+              </div>
+      </div>
+      <div class="row">
+          <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-xl-8 col-sm-8 col-md-8 col-lg-8">
+               <div sec:authorize="!isAuthenticated()">
+                 <div class="alert alert-danger" role="alert">
+                  Please Login to write comments also see other comments
+                 </div>
+               </div>
+
+              <div sec:authorize="isAuthenticated()">
+                  <br>
+                  <hr>
+                  <br>
+                  <div class="comments-button">
+                      <a th:href="@{'/post/{id}'(id=${post.post_id})}" class="btn btn-info">Write Comments about this topic</a>
+                      <br>
+                  </div>
+
+
+                  <div class="comments_and_other_tabs">
+                      <br>
+                      <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                 href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Comments</a>
+                          </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                          <br>
+                          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                              <div class="row">
+                                  <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+                                      <!--Comments-->
+                                  <!--    <div class="well" th:each="comment : ${commentsList}">
+                                          <h5 th:text="${comment.comment_body}">Body</h5>
+                                          <div th:text="'Created: ' + ${#dates.format(comment.comment_date, 'dd-MMM-yyyy')} + ' by '">
+                                              Created by
+                                          </div>
+                                          <div><a th:text="${comment.user.firstname}" th:href="@{'/#/' + ${comment.user.username}}">User</a>
+                                          </div>-->
+                                          <br>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                  </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+          <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2"></div>
+
+
+
+
+
       </div>
 
 
+
+      <div th:replace="/fragments/header :: footer"></div>
   </div>
 
 <div th:replace="/fragments/header :: all-js"></div>
