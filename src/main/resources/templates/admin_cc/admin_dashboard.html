@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+ <!--   <style>
+        .nav.nav-tabs {
+            float: left;
+            display: block;
+            margin-right: 20px;
+            border-bottom:0;
+            border-right: 1px solid #ddd;
+            padding-right: 15px;
+        }
+        .nav-tabs .nav-link {
+            border: 1px solid transparent;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+            background: #ccc;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #495057;
+           /* background-color:#007bff !important;*/
+            border-color: transparent !important;
+        }
+        .nav-tabs .nav-link {
+            border: 1px solid transparent;
+            border-top-left-radius: 0rem!important;
+            border-top-right-radius: 0rem!important;
+        }
+        .tab-content>.active {
+            display: block;
+         /*   background: #007bff;*/
+            min-height: 565px;
+        }
+        .nav.nav-tabs {
+            float: left;
+            display: block;
+            margin-right: 20px;
+            border-bottom: 0;
+            border-right: 1px solid transparent;
+            padding-right: 15px;
+        }
+    </style>-->
+    <!--    <h2>bootstrap 4 vertical tabs</h2>
+         <ul class="nav nav-tabs" id="myTab" role="tablist">
+             <li class="nav-item">
+                 <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Home</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">Settings</a>
+             </li>
+         </ul>
+         <div class="tab-content">
+             <div class="tab-pane active" style="border: 2px solid crimson;" id="home" role="tabpanel">1</div>
+             <div class="tab-pane"  style="border: 2px solid crimson;"id="profile" role="tabpanel">..2.</div>
+             <div class="tab-pane" style="border: 2px solid crimson;" id="messages" role="tabpanel">.3..</div>
+             <div class="tab-pane" style="border: 2px solid crimson;" id="settings" role="tabpanel">.4..</div>
+         </div>
+         -->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+
+
+
+    <div th:replace="/fragments/admin :: admin-dashboard"></div>
+    <br>
+    <div th:replace="/fragments/header :: footer-Copyright"></div>
+
+
+
+
+    <br>
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

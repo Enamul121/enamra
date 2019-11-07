@@ -1,0 +1,157 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:replace="/header :: header-css-and-meta"></div>
+
+
+</head>
+<body>
+
+<div th:fragment="create_CHIF_INSTRUCTOR">
+    <hr>
+    <h2> Chief Instructor</h2>
+    <table class="table table-striped">
+        <thead>
+        <th scope="row">#ID</th>
+        <th scope="row">Name</th>
+        <th scope="row">Email</th>
+        <th scope="row">Update</th>
+        <th scope="row">Delete</th>
+        </thead>
+        <tbody>
+        <tr th:each="ci : ${ci}">
+            <td th:text="${ci.id}" ></td>
+            <td th:text="${ci.firstname + ' '+ ci.lastname}"></td>
+            <td th:text="${ci.email}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/XXX}"  role="button" >Update</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/manager/del/ci/__${ci.id}__}" role="button" >Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a class="btn btn-primary" th:href="@{/manager/create/chief_instructor}"  role="button" >Create  Chief Instructor</a>
+    <br>
+</div>
+<div th:fragment="create_INSTRUCTOR">
+    <hr>
+    <h2>Instructor</h2>
+    <table class="table table-striped">
+        <thead>
+        <th scope="row">#ID</th>
+        <th scope="row">Name</th>
+        <th scope="row">Email</th>
+        <th scope="row">Update</th>
+        <th scope="row">Delete</th>
+        </thead>
+        <tbody>
+        <tr th:each="ins : ${instructor}">
+            <td th:text="${ins.id}" ></td>
+            <td th:text="${ins.firstname+' '+ ins.lastname}"></td>
+            <td th:text="${ins.email}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/XXX}"  role="button" >Update</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/manager/del/instructor/__${ins.id}__}" role="button" >Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a class="btn btn-primary" th:href="@{/manager/create/instructor}"  role="button" >Create  Instructor</a>
+    <br>
+</div>
+
+
+<div th:fragment="manager-dashboard">
+    <div class="row admin-dashboard">
+        <div class="col-xl-2 col-sm-2 col-md-2 col-lg-2 mb-3 admin-left">
+            <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                       role="tab" aria-controls="home" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="role-tab" data-toggle="tab" href="#role"
+                       role="tab" aria-controls="role" aria-selected="false">Create & manage Role</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
+                       role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="ext1-tab" data-toggle="tab" href="#ext1"
+                       role="tab" aria-controls="ext1" aria-selected="false">Extra 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="ext2-tab" data-toggle="tab" href="#ext2"
+                       role="tab" aria-controls="ext2" aria-selected="false">Extra 2</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xl-10 col-sm-10 col-md-10 col-lg-10 admin-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h2></h2>
+                    <a class="btn btn-primary"  th:href="@{/admin/course/create}" role="button">Create Course</a>
+                    <a class="btn btn-secondary" th:href="@{/admin/course/course_with_section_last_10}" role="button">Last 10 Course With Section</a>
+                    <a class="btn btn-success" th:href="@{/admin/course/last_10_course}" role="button">Course without Section</a>
+                    <a class="btn btn-info" th:href="@{/admin/course/last_10_final}" role="button">Last 10 Course Final</a>
+
+
+                </div>
+                <div class="tab-pane fade" id="role" role="tabpanel" aria-labelledby="role-tab">
+                    <div th:replace="/fragments/manager ::create_CHIF_INSTRUCTOR"></div>
+                    <div th:replace="/fragments/manager ::create_INSTRUCTOR"></div>
+
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <h2>Contact</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, eveniet earum. Sed accusantium eligendi molestiae quo hic velit nobis et, tempora placeat ratione rem blanditiis voluptates vel ipsam? Facilis, earum!</p>
+                </div>
+                <div class="tab-pane fade" id="ext1" role="tabpanel" aria-labelledby="ext1-tab">
+                    <h2>Extra 1</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, eveniet earum. Sed accusantium eligendi molestiae quo hic velit nobis et, tempora placeat ratione rem blanditiis voluptates vel ipsam? Facilis, earum!</p>
+                </div>
+                <div class="tab-pane fade" id="ext2" role="tabpanel" aria-labelledby="ext2-tab">
+                    <h2>Extra 2</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, eveniet earum. Sed accusantium eligendi molestiae quo hic velit nobis et, tempora placeat ratione rem blanditiis voluptates vel ipsam? Facilis, earum!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="XXXX">
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+
+
+        </div>
+    </div>
+</div>
+
+  <div th:fragment="XXXX">
+    <div class="row"></div>
+  </div>
+
+
+  <div th:fragment="xxxxxxxx">
+    <div class="row">
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12"></div>
+    </div>
+  </div>
+
+
+
+
+
+<div th:replace="/header :: all-js"></div>
+</body>
+</html>

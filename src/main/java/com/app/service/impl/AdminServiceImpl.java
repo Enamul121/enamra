@@ -11,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 @Service
+@Transactional
 public class AdminServiceImpl implements AdminService {
 
     @Qualifier("userRepository")
@@ -43,7 +45,45 @@ public class AdminServiceImpl implements AdminService {
 
 
     @Override
+    public void saveHR(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setActive(1);
+        Role hr_role = roleRepository.findByRole("HR");
+        user.setRoles(new HashSet<Role>(Arrays.asList(hr_role)));
+        adminRepo.save(user);
+    }
+
+    @Override
+    public void saveManager(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setActive(1);
+        Role manager_role = roleRepository.findByRole("MANAGER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(manager_role)));
+        adminRepo.save(user);
+    }
+
+    @Override
+    public List<User> getAllHR() {
+        return adminRepo.findAllHR_By_Roles();
+    }
+
+    @Override
+    public List<User> getAllManager() {
+        return adminRepo.findAllManagerByRoles();
+    }
+
+    @Override
     public List<User> getAllAdmin() {
         return adminRepo.findAllAdminByRoles() ;
     }
+
+
+    @Override
+    public void deleteAdminByID(Long id) { adminRepo.deleteById(id); }
+
+    @Override
+    public void deleteManagerByID(Long id) {  adminRepo.deleteById(id); }
+
+    @Override
+    public void deleteHR_ByID(Long id) {  adminRepo.deleteById(id);}
 }

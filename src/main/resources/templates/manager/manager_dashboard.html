@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="alert alert-primary text-center" role="alert">Welcome to Manager Dashboard</div>
+            <div th:replace="/fragments/manager :: manager-dashboard"></div>
+        </div>
+    </div>
+    <br>
+    <div th:replace="/fragments/header :: footer-Copyright"></div>
+
+
+
+
+    <br>
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

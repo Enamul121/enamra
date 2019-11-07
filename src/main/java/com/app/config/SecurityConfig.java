@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -33,37 +34,47 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    //   "/media/files/blog/img/**","**/media/**",
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/files/**","**/media/files/blog/img/**","**/media/**","/media/**",
-                        "**/img/**","**/img/logo.png","**/img/favicon.ico","/v/**","/error","/user/logout",
-                        "/g/topic/**","/g/**", "/user/signup","/user/login","/","/entry","/blog/**").permitAll()
-                .antMatchers("**/webjars/**","/webjars/**","/resources/static/**").permitAll()
-                .antMatchers("/media/","/media/**",
-                        "/","/resources/**","/resources/static/upload_files","/resources/static/upload_files/**","/resources/static/img/**","/resources/static/user_files/**", "/img/**", "/fonts/**", "/css/**","/js/**").permitAll()
-                .antMatchers("/admin","/admin/**").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
+                .antMatchers("/files/**", "/academic/**","/professional/**","/general/**",
+                                       "**/img/**","**/img/logo.png","**/img/favicon.ico","/v/**",
+                                       "/error","/user/logout",
+                                       "/g/topic/**","/g/**", "/user/signup","/user/login",
+                                       "/","/entry","/blog/**",
+                                       "/media/files/blog/img/**",
+                                       "**/webjars/**","/webjars/**","/resources/static/**").permitAll()
+
+
+                .antMatchers("/resources/**","/resources/static/upload_files",
+                                       "/resources/static/upload_files/**","/resources/static/img/**",
+                                       "/resources/static/user_files/**", "/img/**", "/fonts/**",
+                                       "/css/**","/js/**").permitAll()
+
+               .antMatchers("/home").fullyAuthenticated()
+
+                .antMatchers("/admin_Dashboard","/admin","/admin/**").hasAnyAuthority("ADMIN")
+             //   .anyRequest().authenticated()
+                .antMatchers("/hr/**").hasAnyAuthority("ADMIN","HR")// "/hr_Dashboard"
+                .antMatchers("/manager/**","/manager_dashboard").hasAnyAuthority("ADMIN","MANAGER")
                 .antMatchers("/comment/create","/comment/**","/blog/file_upload").hasAnyRole("USER","ADMIN")
                 .anyRequest().authenticated()
-                .antMatchers("/user","/user/**").hasAnyAuthority("USER")
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/your_Dashboard","/user","/user/**").hasAuthority("USER")
+                //.anyRequest().authenticated()
+
+
                 .and()
                 .csrf().disable()
                 .formLogin().loginPage("/user/login").failureUrl("/user/login?error=true")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/home", true)
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .and().logout().logoutUrl("/user/logout");
+                .and().logout().logoutUrl("/user/logout").logoutSuccessUrl("/");
     }
 
     @Bean
     public static BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
-
-
   }

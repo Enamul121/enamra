@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6">
+            <!-- Default form register -->
+            <form class="text-center border border-light p-5" method="POST" th:action="@{/admin/create/hr}" th:object="${user}">
+                <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}"></div>
+                <div th:if="${msg}" class="alert alert-info"><a th:href="@{/admin_Dashboard}">Go to Dashboard</a></div>
+                <p class="h4 mb-4">Sign up</p>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!-- First name -->
+                        <input type="text" th:field="*{firstname}" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        <input type="text" th:field="*{lastname}" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+                <!--username-->
+                <input type="text" th:field="*{username}" class="form-control mb-4" placeholder="username">
+
+                <!-- E-mail -->
+                <input type="email" th:field="*{email}" class="form-control mb-4" placeholder="E-mail">
+                <small class="form-text text-muted mb-4">
+                    <span class="text-danger align-middle" th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{email}"></span>
+                </small>
+                <!-- Password -->
+                <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+                <small class="form-text text-muted mb-4">
+                    At least 8 characters and 1 digit
+                </small>
+
+                <!-- Confirm password  -->
+                <input type="password" th:field="*{confirmPassword}" class="form-control" placeholder="confirm password">
+                <small class="form-text text-muted mb-4">
+                    <span class="text-danger align-middle" th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}"></span>
+                </small>
+
+                <!-- Newsletter -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="Newsletter">
+                    <label class="custom-control-label" for="Newsletter">Subscribe to our newsletter</label>
+                </div>
+
+                <!-- Sign up button -->
+                <button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
+                <hr>
+                <!-- Terms of service -->
+                <p>By clicking
+                    <em>Sign up</em> you agree to our
+                    <a href="" target="_blank">terms of service</a>
+            </form>
+
+        </div>
+        <div class="col-xl-3 col-sm-3 col-md-3 col-lg-3"></div>
+    </div>
+</div>
+<div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

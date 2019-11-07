@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
+    <div th:replace="/fragments/header :: header-css-and-meta"/>
+
+</head>
+<body>
+<div class="container-fluid">
+        <div th:replace="/fragments/header :: banner"></div>
+        <div th:replace="/fragments/header :: navigation_menu"></div>
+    <br>
+    <h1 class="alert alert-info">Welcome to Academic Domain</h1>
+    <p class="alert alert-info">academic academic academic academic academic.....</p>
+
+    <hr>
+     <div class="row">
+          <div class="col-md-12 col-lg-12 col-sm-12 col-xl-12 text-center">
+              <button class="btn btn-outline-success" type="button" data-toggle="collapse" data-target="#undergraduate"
+                      aria-expanded="false" aria-controls="collapseExample">Undergraduate
+              </button>
+          </div>
+
+     </div>
+        <div class="collapse" id="undergraduate">
+            <br>
+            <div class="card card-body">
+                <div class="row">
+                    <div class="list-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                        <a href="#" class="list-group-item list-group-item-action font-weight-bold font-italic">BUSINESS AND ENTREPRENEURSHIP</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">BUSINESS ADMINISTRATION</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">BUSINESS STUDIES</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">REAL ESTATE</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">TOURISM & HOSPITALITY MANAGEMENT</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">INNOVATION & ENTREPRENEURSHIP</a>
+                        <br>
+
+                    </div>
+                    <div class="list-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                        <a href="#" class="list-group-item list-group-item-action font-weight-bold font-italic">INFORMATION TECHNOLOGY AND ENGINEERING</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">COMPUTER SCIENCE & ENGINEERING(CSE)</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">COMPUTING & INFORMATION SYSTEM (CIS)</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">SOFTWARE ENGINEERING(SE)</a>
+                           <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">ELECTRICAL & ELECTRONIC ENGINEERING(EEE)</a>
+                            <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">ARCHITECTURE</a>
+                           <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">CIVIL ENGINEERING</a>
+                           <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">NUTRITION & FOOD ENGINEERING</a>
+                          <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">TEXTILE ENGINEERING</a>
+                          <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ELECTRONICS & TELECOMMUNICATION ENGINEERING(ENT)</a>
+                           <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">ENVIRONMENTAL SCIENCE AND DISASTER MANAGEMENT</a>
+                            <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">MULTIMEDIA & CREATIVE TECHNOLOGY (MCT)</a>
+                           <br>
+                    </div>
+                    <div class="list-group col-md-4 col-lg-4 col-sm-4 col-xl-4">
+                        <a href="#" class="list-group-item list-group-item-action font-weight-bold font-italic">HUMANITIES AND SOCIAL SCIENCE & OTHERS</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">ENGLISH</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">LAW</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">JOURNALISM & MASS COMMUNICATION</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">DEVELOPMENT STUDIES</a>
+                        <br>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">INFORMATION SCIENCE AND LIBRARY MANAGEMENT</a>
+                        <br>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <hr>
+
+    <br>
+    <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
+    <br>
+
+</div>
+
+  <div th:replace="/fragments/header :: all-js"></div>
+</body>
+</html>

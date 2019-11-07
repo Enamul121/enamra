@@ -1,5 +1,5 @@
 
-
+.body { font-family: Roboto;}
 @media (min-width: 1920px) and (max-width: 2560px) {
 .container-fluid { width: 85%}
 }
@@ -169,3 +169,40 @@ padding-top: 120px;}
 
 
                                   }
+
+.blog-comments { width: 100%; min-height: 450px;}
+
+
+
+
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+
+
+
+/*   admin-dashboard   */
+
+.admin-dashboard { min-height: 1080px;}
+
+.admin-left, .admin-right {height: 100%; }
+
+
+
+
+
+
+
+

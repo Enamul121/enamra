@@ -53,6 +53,22 @@ public class AdminControllerTest {
     }
 
 
+
+    @Test
+    public void getAllHr() {  // test OK
+        List<User> adminList = adminRepo.findAllHR_By_Roles();
+        log.info("All HR -> {}", adminList);
+    }
+
+
+
+    @Test
+    public void getAllManager() {  // test OK
+        List<User> adminList = adminRepo.findAllManagerByRoles();
+        log.info("All Manager -> {}", adminList);
+    }
+
+
     @Test
     @Transactional
     @DirtiesContext

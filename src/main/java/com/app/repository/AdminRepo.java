@@ -15,4 +15,14 @@ public interface AdminRepo extends JpaRepository<User,Long> {
             "inner join role r on(ur.role_id=r.role_id) where r.role_id=1 ", nativeQuery = true)
     List<User> findAllAdminByRoles();
 
+
+    @Query(value = "select *  from user u inner join user_role ur on(u.id=ur.user_id) " +
+            "inner join role r on(ur.role_id=r.role_id) where r.role_id=3 ", nativeQuery = true)
+    List<User> findAllManagerByRoles();
+
+
+    @Query(value = "select *  from user u inner join user_role ur on(u.id=ur.user_id) " +
+            "inner join role r on(ur.role_id=r.role_id) where r.role_id=4 ", nativeQuery = true)
+    List<User> findAllHR_By_Roles();
+
 }

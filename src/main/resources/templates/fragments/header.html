@@ -92,18 +92,29 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
+                        <div sec:authorize="!isAuthenticated()">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                        </div>
+                      <div sec:authorize="isAuthenticated()">
+                          <li class="nav-item active">
+                              <a class="nav-link" href="/" th:href="@{/home}">Home<span class="sr-only">(current)</span></a>
+                          </li>
+                      </div>
+
+
+
+
                         <li class="nav-item active">
-                            <a class="nav-link" href="/" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">General</a>
+                            <a class="nav-link" href="#" th:href="@{/general}">General</a>
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link " href="#">Academic</a>
+                            <a class="nav-link " href="#" th:href="@{/academic}">Academic</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link " href="#">Professional</a>
+                            <a class="nav-link " href="#" th:href="@{/professional}">Professional</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link " href="#">TLD</a>
@@ -112,7 +123,52 @@
                             <a class="nav-link " href="#">Trending</a>
                         </li>
                     </ul>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">App</button>
+
+                    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                        <li class="nav-item right" th:if="${user}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/your_Dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${admin}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/admin_Dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${hr}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/hr/hr_Dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${manager}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/manager_dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${CHIF_INSTRUCTOR}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${INSTRUCTOR}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${Assistant_INSTRUCTOR}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${Teaching_Assistant}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${STUFF}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li class="nav-item right" th:if="${EMPLOYEE}">
+                            <a class="nav-link navbar-nav justify-content-end btn btn-outline-success"
+                               th:href="@{/dashboard}" tabindex="-1" aria-disabled="true" style="margin-right: 10px;">Dashboard</a>
+                        </li>
+                        <li>  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">App</button></li>
+                    </ul>
+
+
 
                 </div>
             </nav>
@@ -469,156 +525,120 @@
     <!-- Footer -->
     <footer class="page-footer font-small unique-color-dark">
 
-        <div style="background-color: #6351ce;">
-            <div class="container">
 
-                <!-- Grid row-->
-                <div class="row py-4 d-flex align-items-center">
-
-                    <!-- Grid column -->
-                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                        <h6 class="mb-0">Get connected with us on social networks!</h6>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-                        <!-- Facebook -->
-                        <a class="fb-ic">
-                            <i class="fab fa-facebook-f white-text mr-4"> </i>
-                        </a>
-                        <!-- Twitter -->
-                        <a class="tw-ic">
-                            <i class="fab fa-twitter white-text mr-4"> </i>
-                        </a>
-                        <!-- Google +-->
-                        <a class="gplus-ic">
-                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
-                        </a>
-                        <!--Linkedin -->
-                        <a class="li-ic">
-                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
-                        </a>
-                        <!--Instagram-->
-                        <a class="ins-ic">
-                            <i class="fab fa-instagram white-text"> </i>
-                        </a>
-
-                    </div>
-                    <!-- Grid column -->
-
-                </div>
-                <!-- Grid row-->
-
-            </div>
-        </div>
-
+        <div th:replace="/fragments/header ::footer-head"></div>
         <!-- Footer Links -->
-        <div class="container-fluid text-center text-md-left footer_main">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <!-- Topic -->
-                    <h6 class="text-uppercase font-weight-bold">Company name</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                        consectetur
-                        adipisicing elit.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Products</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <a href="#!">Enamra 1</a>
-                    </p>
-                    <p>
-                        <a href="#!">Enamra 1</a>
-                    </p>
-                    <p>
-                        <a href="#!">BrandFlow</a>
-                    </p>
-                    <p>
-                        <a href="#!">Bootstrap Angular</a>
-                    </p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <a href="#!">Your Account</a>
-                    </p>
-                    <p>
-                        <a href="#!">Become an Affiliate</a>
-                    </p>
-                    <p>
-                        <a href="#!">Shipping Rates</a>
-                    </p>
-                    <p>
-                        <a href="#!">Help</a>
-                    </p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-                    <p>
-                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-
+        <div th:replace="/fragments/header ::footer-body"></div>
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href="#"> enamra.com</a>
-        </div>
+        <div th:replace="/fragments/header ::footer-Copyright"></div>
         <!-- Copyright -->
-
     </footer>
     <!-- Footer -->
 </div>
 
+<div th:fragment="footer-head">
+
+
+        <div class="row" style="background-color: #C2E9E1;
+        height: 30px;  margin-right: 1px; margin-left: 1px;" >
+
+            <!-- Grid column -->
+            <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 text-md-right">
+                <h6 class="mb-0">Get connected with us on social networks!</h6>
+            </div>
+            <!-- Grid column  align-items-center -->
+
+            <div class="col-xl-6 col-sm-6 col-md-6 col-lg-6 text-center text-md-left">
+                <a class="fb-ic"><i class="fab fa-facebook-f white-text mr-4"> </i></a>
+                <a class="tw-ic"><i class="fab fa-twitter white-text mr-4"> </i></a>
+                <a class="gplus-ic"><i class="fab fa-google-plus-g white-text mr-4"> </i></a>
+                <a class="li-ic"><i class="fab fa-linkedin-in white-text mr-4"> </i></a>
+                <a class="ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+            </div>
+
+        </div>
+
+
+</div>
+<div th:fragment="footer-body">
+
+    <div class="container-fluid text-center text-md-left footer_main">
+
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                <h6 class="text-uppercase font-weight-bold">Company name</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                    consectetur
+                    adipisicing elit.</p>
+
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Products</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">Enamra 1</a>
+                </p>
+                <p>
+                    <a href="#!">Enamra 2</a>
+                </p>
+                <p>
+                    <a href="#!">Enamra 3</a>
+                </p>
+                <p>
+                    <a href="#!">Bootstrap Angular</a>
+                </p>
+
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><a href="#">Your Account</a></p>
+                <p><a href="#">Become an Affiliate</a></p>
+                <p><a href="#">Enamra Portal</a></p>
+                <p><a href="#">Help</a></p>
+
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><i class="fas fa-home mr-3"></i> Mirpur, Dhaka, Bangladesh</p>
+                <p><i class="fas fa-envelope mr-3"></i> info@enamra.com</p>
+                <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div th:fragment="footer-Copyright">
+    <div class="row" >
+        <div class="col-xl-12 col-sm-12 col-md-12 col-lg-12">
+            <div style="background-color: #DFE8E6;"
+                 class="footer-copyright text-center py-3">© 2019 Copyright:<a href="#"> enamra.com</a></div>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="all-js">
+
+
     <script src="../../static/js/fontawesome/all.js" th:src="@{/js/fontawesome/all.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js}"></script>
     <script th:src="@{/webjars/jquery/3.2.1/dist/jquery.slim.js}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="../../static/js/main.js" th:src="@{/js/main.js}"></script>
+
+    <script src="../../static/js/jquery-3.2.1.slim.min.js"  th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+    <script src="../../static/js/popper.min.js"  th:src="@{/js/popper.min.js}"></script>
+    <script src="../../static/js/bootstrap.min.js"  th:src="@{/js/bootstrap.min.js}"></script>
+
 
 </div>
 </body>

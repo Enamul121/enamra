@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,8 +47,15 @@ public class User_FilesController {
         ModelAndView model = new ModelAndView("user/view_img");
        List<User_files> file_img = user_file_repo.last60Records(user.getId());
        model.addObject("img_Lists", file_img);
-
         return model;
+    }
+
+    @GetMapping("/del/{file_id}")
+    public ModelAndView deleteImg(@PathVariable("file_id") Long id){
+        ModelAndView model = new ModelAndView("redirect:/profile");
+        fileService.deleteFile(id);
+        return model;
+
     }
 
 

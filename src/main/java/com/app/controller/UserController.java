@@ -34,6 +34,23 @@ public class UserController {
     @Autowired
     private Profile_pic_service pic_service;
 
+
+    @GetMapping("/your_Dashboard")
+    public ModelAndView userDashboard(){return new ModelAndView("user/user_dashboard");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Value("${profile.pic.dir}")
     private String uploadDirectory;
 

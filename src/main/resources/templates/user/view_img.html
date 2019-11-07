@@ -36,7 +36,7 @@
                 <td th:text="${img.full_path}"></td>
                 <td th:text="${img.file_extension}"></td>
                 <td><img th:src="@{__${img.full_path}__}" height="200px" width="200px" ></td>
-                <td><a class="btn btn-primary" th:href="@{/CC/__${img.file_id}__}"
+                <td><a class="btn btn-primary" th:href="@{/files/del/__${img.file_id}__}"
                        role="button">Delete</a>
                 </td>
             </tr>

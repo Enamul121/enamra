@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,9 +29,10 @@ public class User_File_Service {
     @Autowired
     private User_File_Repo file_repo;
 
-   // @Value("user.file.dir")  /files/blog/img
-    String user_file_dir = "/home/enamul/IdeaProjects/new/enamra/src/main/resources/static/user_files";
-        //"/home/enamul/IdeaProjects/new/enamra/src/main/media";
+
+    String user_file_dir = "/home/enamul/IdeaProjects/new/enamra/media/files/blog/img";
+
+
 
 
     //   Upload & then store it to the server.
@@ -54,10 +56,18 @@ public class User_File_Service {
         userFiles.setFile_name(modifiedName);
         userFiles.setFile_dir(user_file_dir+"/"+modifiedName);
         userFiles.setFile_extension(file_extension);
-        userFiles.setFull_path("http://localhost:8080/user_files/"+modifiedName); // files/blog/img/
+        userFiles.setFull_path("http://localhost:8080/media/files/blog/img/"+modifiedName); //   user_files
         file_repo.save(userFiles);
 
     }
+
+
+     public void deleteFile(Long id){
+        User_files userFile = file_repo.findById(id).get();
+         File file = new File(userFile.getFile_dir());
+         file.delete();
+         file_repo.deleteById(id);
+     }
 
 
 

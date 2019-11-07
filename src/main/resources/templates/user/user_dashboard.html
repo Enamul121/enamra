@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+   <!-- <th:block th:include="fragments/header :: head"></th:block>-->
     <div th:replace="/fragments/header :: header-css-and-meta"/>
 
 </head>
 <body>
-  <div class="container-fluid">
+<div class="container-fluid">
+
 
 
         <div th:replace="/fragments/header :: banner"></div>
         <div th:replace="/fragments/header :: navigation_menu"></div>
-        <div th:replace="/fragments/header :: slider"></div>
-    <div th:replace="/fragments/header :: cards"></div>
-    <br>
-    <div th:replace="/fragments/header :: tabs"></div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h2>Welcome to Your Dashboard</h2>
+            <br>
+        </div>
+    </div>
     <br>
     <div th:replace="/fragments/header :: footer"></div>
+
+
+
+
     <br>
-  </div>
+
+</div>
 
   <div th:replace="/fragments/header :: all-js"></div>
 </body>
